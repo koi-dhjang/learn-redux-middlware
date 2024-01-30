@@ -11,7 +11,6 @@ import { composeWithDevTools } from "@redux-devtools/extension";
 import { thunk } from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
-// const store = createStore(rootReducer, applyMiddleware(myLogger, logger)); // 여러개의 미들웨어 적용
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk, logger))); // 미들웨어 여러개 사용할 경우 logger가 항상 마지막에 와야함
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // n밀리세컨동안 기다리는 프로미스를 만들어주는 함수
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
@@ -26,21 +26,21 @@ const posts = [
 // 게시글 목록을 가져오는 비동기 함수
 export const getPosts = async () => {
     // FIXME: axios 사용하기전 코드
-    // await sleep(500); // 0.5초 쉬고
-    // return posts;
+    await sleep(500); // 0.5초 쉬고
+    return posts;
 
     // TODO: axios 사용
-    const response = await axios.get('http://localhost:4000/posts');
-    return response.data;
+    // const response = await axios.get('http://localhost:4000/posts');
+    // return response.data;
 }
 
 // id값으로 게시글을 조회하는 비동기 함수   
 export const getPostById = async id => {
     // FIXME: axios 사용하기전 코드
-    // await sleep(500); // 0.5초 쉬고
-    // return posts.find(post => post.id === id); // id값이 동일한 값 반환
+    await sleep(500); // 0.5초 쉬고
+    return posts.find(post => post.id === id); // id값이 동일한 값 반환
 
     // TODO: axios 사용
-    const response = await axios.get(`http://localhost:4000/post/${id}}`);
-    return response.data;
+    // const response = await axios.get(`http://localhost:4000/post/${id}}`);
+    // return response.data;
 };

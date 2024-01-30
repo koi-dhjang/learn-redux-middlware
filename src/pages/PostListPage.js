@@ -1,12 +1,10 @@
 import React from 'react';
-import PostContainer from '../containers/PostContainer';
-import { Outlet } from 'react-router-dom';
+import PostListContainer from './../containers/PostListContainer';
 
 function PostListPage(){
     return (
         <>
-            <PostContainer/>
-            <Outlet/>
+            <PostListContainer />
         </>
     );
 }
