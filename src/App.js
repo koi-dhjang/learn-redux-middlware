@@ -5,10 +5,13 @@ import PostListPage from './pages/PostListPage';
 
 function App() {
   return (
-        <Routes>
-          <Route path='/' element={<PostListPage/>} />
-          <Route path=':id' element={<PostPage/>} />
-        </Routes>
+        <>
+          <Routes>
+            <Route path='/' element={<PostListPage/>} />
+            <Route path=':id' element={<PostPage/>} />
+          </Routes>
+        </>
+        
   );
 }
 

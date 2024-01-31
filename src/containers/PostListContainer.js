@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PostList from '../components/PostList';
-// import { getPosts } from '../modules/posts';
 import { getPosts } from '../modules/posts';
 
 function PostListContainer() {
