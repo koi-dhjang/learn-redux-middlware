@@ -8,6 +8,12 @@ function PostFormContainer() {
     const [ body, setBody ] = useState('');
 
 
+    // TODO: useSelector()로 스토어에서 상태값을 가져오고
+    const post = useSelector( state => state.post);
+
+    // TODO: useDispatch()로 스토어에 상태값을 변경
+
+
     // TODO: input입력값이 변경되면 실행되는 함수
     const handleChange = e => {
         setDatas({
@@ -49,7 +55,6 @@ function PostFormContainer() {
 
     const addBtn = () => {
         console.log('동작확인');
-        
     };
 
     return (

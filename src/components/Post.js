@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletePost } from "../modules/posts";
+import Swal from 'sweetalert2';
 
 function Post({ post }){
     const { title, body } = post;
@@ -30,7 +31,7 @@ function Post({ post }){
 
     // TODO: dispatch를 통해 redux store의 updatePost() 호출하여 수정처리
     const updateBtn = () => {
-        dispatch(updateBtn())
+        dispatch(updateBtn());
     }
 
 
@@ -38,7 +39,23 @@ function Post({ post }){
     const deleteBtn = () => {
         dispatch(deletePost(post.id));
         // 성공하면 성공 메시지와 함께 홈으로 이동
-        console.log('삭제 성공');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'center-center',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: '정상적으로 삭제되었습니다.'
+        })
+
         navigate('/');
         // 실패하면 실패 메시지와 함께 에러로그 출력
         // console.log('삭제 실패');
@@ -53,6 +70,10 @@ function Post({ post }){
                 </button>
             </div>
             <div>
+                <h1>{ title }</h1>
+                <p>{ body }</p>
+            </div>
+            <div>
                 <button onClick={toggleForm}>
                     수정
                 </button>
@@ -60,21 +81,6 @@ function Post({ post }){
                     삭제
                 </button>
             </div>
-            { !showForm ? (
-            <div>
-                <h1>{ title }</h1>
-                <p>{ body }</p>
-            </div>) 
-            : (
-                <div>
-                    <p> 제목 : 
-                        <input type="text" value={title}/>
-                    </p>
-                    <p>
-                        내용 : 
-                        <input type="text" value={body} />
-                    </p>
-                </div>)}
         </>
     );
 }
